@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation"
 
 // import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-// import { Icons } from "@/components/icons"
-// import { Badge } from "@/registry/new-york/ui/badge"
 
 export function MainNav() {
   const pathname = usePathname()
@@ -22,6 +20,17 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
         <Link
+          href="/LHI"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/LHI")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          勞健保計算
+        </Link>
+        <Link
           href="/my-ip"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -29,47 +38,6 @@ export function MainNav() {
           )}
         >
           查詢IP
-        </Link>
-        <Link
-          href="/docs/components"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          小工具1
-        </Link>
-        <Link
-          href="/themes"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/themes")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          小工具2
-        </Link>
-        <Link
-          href="/examples"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Examples
-        </Link>
-        <Link
-          href={""}
-          className={cn(
-            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-          )}
-        >
-          GitHub
         </Link>
       </nav>
     </div>

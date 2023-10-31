@@ -5,9 +5,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 import { Inter as FontSans } from "next/font/google"
 import { cn } from '@/lib/utils'
-import { MainNav } from '@/components/main-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { Analytics } from '@vercel/analytics/react';
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,10 +31,11 @@ export default function RootLayout({
         fontSans.variable
       )}>
         <div className="relative flex min-h-screen flex-col">
-          {/* <SiteHeader /> */}
+          <SiteHeader />
           <div className="flex-1">{children}</div>
-          {/* <SiteFooter /> */}
+          <SiteFooter />
         </div>
+        <Analytics />
       </body>
     </html>
   )

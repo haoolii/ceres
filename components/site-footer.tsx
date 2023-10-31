@@ -11,18 +11,9 @@ export function SiteFooter() {
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            shadcn
+            unnhao
           </a>
-          . The source code is available on{" "}
-          <a
-            // href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium underline underline-offset-4"
-          >
-            GitHub
-          </a>
-          .
+        
         </p>
       </div>
     </footer>
