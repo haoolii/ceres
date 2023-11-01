@@ -6,6 +6,7 @@ import {
   calculate健保,
   calculate勞保,
   calculate勞退,
+  calculate級距,
 } from "../utils/calculate";
 import {
   Card,
@@ -42,12 +43,14 @@ export const LHIBoard = () => {
         勞保: null,
         健保: null,
         勞退: null,
+        級距: null,
       };
     }
     return {
       勞保: calculate勞保(salary),
       健保: calculate健保(salary),
       勞退: calculate勞退(salary),
+      級距: calculate級距(salary),
     };
   }, [salary]);
 
@@ -124,7 +127,12 @@ export const LHIBoard = () => {
         <Card>
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">員工與公司負擔表</CardTitle>
-            <CardDescription>員工級距: 0 ~ 0</CardDescription>
+            <CardDescription>
+              員工級距:{" "}
+              {info.級距
+                ? `${format(info.級距[0])} ~ ${format(info.級距[1])}`
+                : "-"}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -170,7 +178,7 @@ export const LHIBoard = () => {
                     員工退休金
                   </p>
                 </div>
-                <div className="ml-auto font-medium text-right flex-1"></div>
+                <div className="ml-auto font-medium text-right flex-1">-</div>
                 <div className="ml-auto font-medium text-right flex-1">
                   {format(單位負擔.退休金)}
                 </div>
