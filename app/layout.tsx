@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from 'next/script'
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -45,6 +46,18 @@ export default function RootLayout({
           <SiteFooter />
         </div>
         <Analytics />
+        <div className="container">
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-LKH7YC24LM" />
+          <Script id="google-analytics">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-LKH7YC24LM');
+            `}
+          </Script>
+        </div>
       </body>
     </html>
   );

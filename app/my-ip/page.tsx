@@ -20,7 +20,7 @@ export interface IPResponse {
 
 const getIp2c = async (ip: string) => {
   try {
-    if (!process.env.IP_KEY) {
+    if (!process.env.IP_KEY || ip === '::1') {
       return "";
     }
     const resp = await fetch(
