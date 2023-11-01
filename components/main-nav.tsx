@@ -1,21 +1,29 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
-// import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 export function MainNav() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        {/* <Icons.logo className="h-6 w-6" /> */}
+        <Image
+          className="relative mr-1"
+          src="/logo.png"
+          alt="yautils Logo"
+          width={25}
+          height={25}
+          priority
+        />
         <span className="hidden font-bold sm:inline-block">
-          {/* {siteConfig.name} */}
+          {siteConfig.name}
         </span>
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -41,5 +49,5 @@ export function MainNav() {
         </Link>
       </nav>
     </div>
-  )
+  );
 }

@@ -1,4 +1,3 @@
-
 export function SiteFooter() {
   return (
     <footer className="py-6 md:px-8 md:py-0">
@@ -9,13 +8,12 @@ export function SiteFooter() {
             // href={siteConfig.links.twitter}
             target="_blank"
             rel="noreferrer"
-            className="font-medium underline underline-offset-4"
+            className="font-medium"
           >
-            unnhao
+            yautils
           </a>
-        
         </p>
       </div>
     </footer>
-  )
+  );
 }
