@@ -2,7 +2,9 @@ import { LHIBoard } from "@/features/LHI/components/LHIBoard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "小工具-勞健保計算、勞退計算",
+  title: "勞健保計算",
+  description: '勞健保計算、勞退計算，方便計算員工與公司負擔金額',
+  keywords: ["工作", "薪資", "勞健保計算", "勞退計算", "員工公司負擔金額", "方便"]
 };
 export default function LHI() {
   return (
