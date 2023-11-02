@@ -10,6 +10,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/config/site";
+import { Toaster } from "@/components/ui/toaster"
+
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -58,6 +60,7 @@ export default function RootLayout({
             `}
           </Script>
         </div>
+        <Toaster />
       </body>
     </html>
   );
