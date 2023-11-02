@@ -1,0 +1,6 @@
+# robots.txt for https://www.yautils.com/
+
+User-agent: *
+Disallow:
+
+Sitemap: https://www.yautils.com/sitemap.xml
