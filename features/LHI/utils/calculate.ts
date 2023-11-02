@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import { 勞保資料, 健保資料, 勞退資料 } from "../constants";
 
 export const 勞保級距 = Object.keys(勞保資料)

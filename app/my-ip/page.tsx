@@ -1,7 +1,19 @@
 import { Metadata } from "next";
 import { headers } from "next/headers";
 export const metadata: Metadata = {
-  title: "小工具-查詢IP",
+  title: "查詢IP",
+  description: "方便查詢IP，經度緯度，確認自己目前使用的IP與連線狀況。",
+  keywords: [
+    "IP",
+    "網路位置",
+    "精度",
+    "緯度",
+    "代理",
+    "Proxy",
+    "電信",
+    "ISP",
+    "網路服務商",
+  ],
 };
 export interface IPResponse {
   ip: string;
@@ -20,7 +32,7 @@ export interface IPResponse {
 
 const getIp2c = async (ip: string) => {
   try {
-    if (!process.env.IP_KEY || ip === '::1') {
+    if (!process.env.IP_KEY || ip === "::1") {
       return "";
     }
     const resp = await fetch(
@@ -53,35 +65,35 @@ export default async function MyIP() {
       <ul className="my-6 grid gap-4">
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">IP</span>
-          <b>{forwardedFor || '-'}</b>
+          <b>{forwardedFor || "-"}</b>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">國家</span>
-          <span>{ipInfo.country_name || '-'}</span>
+          <span>{ipInfo.country_name || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">區域</span>
-          <span>{ipInfo.region_name || '-'}</span>
+          <span>{ipInfo.region_name || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">市</span>
-          <span>{ipInfo.city_name || '-'}</span>
+          <span>{ipInfo.city_name || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">郵政編碼</span>
-          <span>{ipInfo.zip_code || '-'}</span>
+          <span>{ipInfo.zip_code || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">緯度</span>
-          <span>{ipInfo.latitude  || '-'}</span>
+          <span>{ipInfo.latitude || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">經度</span>
-          <span>{ipInfo.longitude  || '-'}</span>
+          <span>{ipInfo.longitude || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">時區</span>
-          <span>{ipInfo.time_zone || '-'}</span>
+          <span>{ipInfo.time_zone || "-"}</span>
         </li>
         {/* <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">當地時間</span>
@@ -89,11 +101,11 @@ export default async function MyIP() {
         </li> */}
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">自治系統號</span>
-          <span>{ipInfo.asn || '-'}</span>
+          <span>{ipInfo.asn || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">自治系統名稱</span>
-          <span>{ipInfo.as || '-'}</span>
+          <span>{ipInfo.as || "-"}</span>
         </li>
         <li className="flex flex-col md:flex-row">
           <span className="inline-block w-40">代理</span>

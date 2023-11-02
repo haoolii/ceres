@@ -39,6 +39,17 @@ export function MainNav() {
           勞健保計算
         </Link>
         <Link
+          href="/area-convert"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/area-convert"
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          面積換算
+        </Link>
+        <Link
           href="/my-ip"
           className={cn(
             "transition-colors hover:text-foreground/80",

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
-import { ViewVerticalIcon } from "@radix-ui/react-icons";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
 import { docsConfig } from "@/config/docs";
@@ -29,7 +29,7 @@ export function MobileNav() {
               variant="ghost"
               className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
             >
-              <ViewVerticalIcon className="h-5 w-5" />
+              <HamburgerMenuIcon className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
@@ -67,15 +67,18 @@ export function MobileNav() {
             </ScrollArea>
           </SheetContent>
         </div>
-        <div className="flex-1 flex justify-center">
-          <Image
-            className="relative mr-1"
-            src="/logo.png"
-            alt="yautils Logo"
-            width={25}
-            height={25}
-            priority
-          />
+        <div className="flex-1">
+          <MobileLink href="/" className="flex justify-center items-center">
+            <Image
+              className="relative mr-1"
+              src="/logo.png"
+              alt="yautils Logo"
+              width={25}
+              height={25}
+              priority
+            />
+            <span className="font-bold">{siteConfig.name}</span>
+          </MobileLink>
         </div>
         <div className="flex-1"></div>
       </div>
