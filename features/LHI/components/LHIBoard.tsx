@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 const format = (num: number) => {
-  return Intl.NumberFormat("en-US").format(num);
+  return `NT$ ${Intl.NumberFormat("en-US").format(num)}`;
 };
 export const LHIBoard = () => {
   const [salary, setSalary] = useState<number>(0);
@@ -35,7 +35,10 @@ export const LHIBoard = () => {
     "本人" | "本人+1" | "本人+2" | "本人+3"
   >("本人");
   const handleSalaryChange = (input: string) => {
-    setSalary(+input.toString().replace(/[^-.0-9]/g, ""));
+    const v = +input.toString().replace(/[^-.0-9]/g, "");
+    if (v <= 999999999) {
+      setSalary(v && !Number.isNaN(v) ? Math.abs(v) : 0);
+    }
   };
   const info = useMemo(() => {
     if (!salary) {
@@ -55,24 +58,31 @@ export const LHIBoard = () => {
   }, [salary]);
 
   const 員工負擔 = useMemo(() => {
+    const 勞保 = info?.勞保?.勞工 || 0;
+    const 健保 = (info?.健保 && info?.健保[identity]) || 0;
+    const 負擔總額 = 勞保 + 健保;
+    const 實領 = salary - 負擔總額;
     return {
-      勞保: info?.勞保?.勞工 || 0,
-      健保: (info?.健保 && info?.健保[identity]) || 0,
+      勞保,
+      健保,
       退休金: "",
-      負擔總額:
-        (info?.勞保?.勞工 || 0) + ((info?.健保 && info?.健保[identity]) || 0),
+      負擔總額,
+      實領,
     };
   }, [info, identity]);
 
   const 單位負擔 = useMemo(() => {
+    const 勞保 = info?.勞保?.單位 || 0;
+    const 健保 = info?.健保?.投保單位負擔金額 || 0;
+    const 退休金 = info?.勞退?.提繳金額 || 0;
+    const 負擔總額 = 勞保 + 健保 + 退休金;
+    const 支付 = salary + 負擔總額;
     return {
-      勞保: info?.勞保?.單位 || 0,
-      健保: info?.健保?.投保單位負擔金額 || 0,
-      退休金: info?.勞退?.提繳金額 || 0,
-      負擔總額:
-        (info?.勞保?.單位 || 0) +
-        (info?.健保?.投保單位負擔金額 || 0) +
-        (info?.勞退?.提繳金額 || 0),
+      勞保,
+      健保,
+      退休金,
+      負擔總額,
+      支付,
     };
   }, [info]);
 
@@ -81,15 +91,14 @@ export const LHIBoard = () => {
       <div className="w-full lg:max-w-lg">
         <Card>
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl">勞健保計算機</CardTitle>
-            <CardDescription>輸入月薪計算勞健保費用</CardDescription>
+            <CardTitle className="text-2xl">輸入月薪計算勞健保費用</CardTitle>
+            <CardDescription>更新日期：2023/11/03</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="salary">薪資</Label>
               <Input
                 id="salary"
-                type="number"
                 inputMode="numeric"
                 placeholder="薪資"
                 value={salary || ""}
@@ -174,9 +183,7 @@ export const LHIBoard = () => {
               <Separator />
               <div className="flex items-center">
                 <div className=" space-y-1 text-left flex-1">
-                  <p className=" text-md font-medium leading-none">
-                    員工退休金
-                  </p>
+                  <p className=" text-md font-medium leading-none">退休金</p>
                 </div>
                 <div className="ml-auto font-medium text-right flex-1">-</div>
                 <div className="ml-auto font-medium text-right flex-1">
@@ -186,13 +193,27 @@ export const LHIBoard = () => {
               <Separator />
               <div className="flex items-center">
                 <div className=" space-y-1 text-left flex-1">
-                  <p className=" text-md font-medium leading-none">總計</p>
+                  <p className=" text-md font-medium leading-none">負擔合計</p>
                 </div>
                 <div className="ml-auto font-medium text-right flex-1">
                   {format(員工負擔.負擔總額)}
                 </div>
                 <div className="ml-auto font-medium text-right flex-1">
                   {format(單位負擔.負擔總額)}
+                </div>
+              </div>
+              <Separator />
+              <div className="flex items-center">
+                <div className=" space-y-1 text-left flex-1">
+                  <p className=" text-md font-medium leading-none">
+                    實領、支付
+                  </p>
+                </div>
+                <div className="ml-auto font-medium text-right flex-1">
+                  <b className="text-blue-600">{format(員工負擔.實領)}</b>
+                </div>
+                <div className="ml-auto font-medium text-right flex-1">
+                  <b className="text-red-600">{format(單位負擔.支付)}</b>
                 </div>
               </div>
             </div>
