@@ -203,7 +203,7 @@ export const ImageColorPickerBoard = () => {
               <CardTitle className="text-xl">顏色</CardTitle>
               <CardDescription>點擊圖片任意處可選取色碼</CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-4">
+            <CardContent className="flex gap-4 flex-col lg:flex-row">
               <div className="flex gap-4">
                 <div
                   className="w-24 h-24 rounded-md shadow-md flex justify-center items-center"
