@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { docsConfig } from "@/config/docs";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -27,37 +28,23 @@ export function MainNav() {
         </span>
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
-        <Link
-          href="/LHI"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/LHI")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          勞健保計算
-        </Link>
-        <Link
-          href="/area-convert"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/area-convert"
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          面積換算
-        </Link>
-        <Link
-          href="/my-ip"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/my-ip" ? "text-foreground" : "text-foreground/60"
-          )}
-        >
-          查詢IP
-        </Link>
+        {docsConfig.mainNav?.map(
+          (item) =>
+            item.href && (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "transition-colors hover:text-foreground/80",
+                  pathname?.startsWith(item.href)
+                    ? "text-foreground"
+                    : "text-foreground/60"
+                )}
+              >
+                {item.title}
+              </Link>
+            )
+        )}
       </nav>
     </div>
   );

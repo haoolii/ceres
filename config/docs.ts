@@ -18,5 +18,9 @@ export const docsConfig: DocsConfig = {
       title: "查詢 IP",
       href: "/my-ip",
     },
+    {
+      title: "圖片色碼選取",
+      href: "/image-color-picker",
+    },
   ],
 };

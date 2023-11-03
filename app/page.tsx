@@ -75,6 +75,22 @@ export default function Home() {
             </CardFooter>
           </Card>
         </div>
+        <div className="w-full md:w-96">
+          <Card>
+            <CardHeader className="space-y-1">
+              <CardTitle className="text-2xl">圖片色碼選取</CardTitle>
+              <CardDescription className="h-12">
+                圖像色彩工具，
+                可以幫助我們選取圖片中的正確的顏色色碼，支援HEX色碼與RGB色碼。
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Link href="/image-color-picker" className="w-full">
+                <Button className="w-full">試試看</Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        </div>
       </div>
     </main>
   );
