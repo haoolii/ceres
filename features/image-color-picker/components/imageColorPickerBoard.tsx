@@ -197,7 +197,7 @@ export const ImageColorPickerBoard = () => {
         </Card>
       </div>
       <div className="flex-1 order-1 xl:order-2 flex flex-col gap-4">
-        <div className="">
+        <div className="order-2 xl:order-1">
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">顏色</CardTitle>
@@ -239,7 +239,7 @@ export const ImageColorPickerBoard = () => {
                   <span className="font-medium">HEX</span>
                   <div
                     className="relative w-full"
-                    onClick={() => copy(selectedHex)}
+                    onClick={() => (haveFile ? copy(selectedHex) : "")}
                   >
                     <Input
                       readOnly
@@ -283,7 +283,7 @@ export const ImageColorPickerBoard = () => {
             </CardContent>
           </Card>
         </div>
-        <div className="">
+        <div className="order-3 xl:order-2">
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">圖片色域</CardTitle>
@@ -315,7 +315,7 @@ export const ImageColorPickerBoard = () => {
             </CardContent>
           </Card>
         </div>
-        <div className="">
+        <div className="order-1 xl:order-3">
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">上傳圖片</CardTitle>
