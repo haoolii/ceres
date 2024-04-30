@@ -59,6 +59,7 @@ export default function RootLayout({
               gtag('config', 'G-LKH7YC24LM');
             `}
           </Script>
+          <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8420154229372901" crossOrigin="anonymous" />
         </div>
         <Toaster />
       </body>
