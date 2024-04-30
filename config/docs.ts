@@ -22,5 +22,9 @@ export const docsConfig: DocsConfig = {
       title: "圖片色碼選取",
       href: "/image-color-picker",
     },
+    {
+      title: "表情符號",
+      href: "/emoji-picker",
+    },
   ],
 };
