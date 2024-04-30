@@ -172,9 +172,14 @@ export const ImageColorPickerBoard = () => {
     }
   };
 
+  const uploadedFileName =
+    fileInputRef.current && fileInputRef.current.files?.length === 1
+      ? fileInputRef.current.files[0].name
+      : "";
+
   return (
     <div className="flex flex-col xl:flex-row gap-4">
-      <div className="flex-1 order-2 xl:order-1">
+      <div className="flex-1 order-1">
         <Card>
           <CardContent className="relative min-h-[520px]">
             <div ref={containerRef} className="relative min-h-[400px] pt-6">
@@ -188,7 +193,7 @@ export const ImageColorPickerBoard = () => {
             {haveFile ? (
               <></>
             ) : (
-              <div className="min-h-[520px] absolute top-0 h-full w-full flex justify-center items-center flex-col gap-2">
+              <div className="min-h-[520px] absolute top-0 left-0 h-full w-full flex justify-center items-center flex-col gap-2">
                 <ImageIcon width={40} height={40} className="text-gray-400" />
                 <span className=" text-gray-400">尚無資料，請上傳圖片</span>
               </div>
@@ -330,15 +335,18 @@ export const ImageColorPickerBoard = () => {
                   onFileChange();
                 }}
               />
-              <Button
-                className="flex items-center space-x-2"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <span>
-                  <DownloadIcon />
-                </span>
-                <span>上傳圖片</span>
-              </Button>
+              <div className="flex space-x-2 items-center">
+                <Button
+                  className="flex items-center space-x-2"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <span>
+                    <DownloadIcon />
+                  </span>
+                  <span>{uploadedFileName || "上傳圖片"}</span>
+                </Button>
+                <span></span>
+              </div>
             </CardContent>
           </Card>
         </div>
