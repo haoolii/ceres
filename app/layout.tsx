@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Script from 'next/script'
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Analytics } from "@vercel/analytics/react";
 import { siteConfig } from "@/config/site";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  icons: "favicon.ico"
+  icons: "favicon.ico",
 };
 
 export default function RootLayout({
@@ -50,6 +50,11 @@ export default function RootLayout({
         <Analytics />
         <div className="container">
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-LKH7YC24LM" />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8420154229372901"
+            crossOrigin="anonymous"
+          ></script>
           <Script id="google-analytics">
             {`
               window.dataLayer = window.dataLayer || [];
